@@ -1,6 +1,9 @@
 import NextAuth from "next-auth";
 import "next-auth/jwt";
 
+import Apple from "next-auth/providers/apple";
+
+import Coinbase from "next-auth/providers/coinbase";
 import GitHub from "next-auth/providers/github";
 
 import { createStorage } from "unstorage";
@@ -22,7 +25,7 @@ const storage = createStorage({
 const config = {
   theme: { logo: "https://authjs.dev/img/logo-sm.png" },
   adapter: UnstorageAdapter(storage),
-  providers: [GitHub],
+  providers: [Apple, Coinbase, GitHub],
   basePath: "/auth",
   callbacks: {
     authorized({ request, auth }) {
